@@ -2,10 +2,10 @@
 """ A module that contains a simple function """
 import asyncio
 import random
-from typing import AsyncGenerator
+import typing
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> typing.Generator[float, NoneType, NoneType]:
     """ an asynchronous generator that yields values """
     for i in range(10):
         await asyncio.sleep(1)
