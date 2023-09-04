@@ -1,4 +1,4 @@
 // a script that inserts a document in the collection school
 
-dbcreatCollection(school)
-db.inventory.insertOne({ name: "Holberton School" })
+// db.createCollection(school)
+db.school.insertOne({ name: "Holberton School" })
