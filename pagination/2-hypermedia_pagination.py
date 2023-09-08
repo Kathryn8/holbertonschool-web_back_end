@@ -67,7 +67,9 @@ class Server:
         return_dictionary['page_size'] = page_size
         return_dictionary['page'] = page
         return_dictionary['data'] = dataset
-        return_dictionary['next_page'] = page + 1
-        return_dictionary['prev_page'] = page - 1
+        if page < num_pages:
+            return_dictionary['next_page'] = page + 1
+        if page > 1:
+            return_dictionary['prev_page'] = page - 1
         return_dictionary['total_pages'] = math.ceil(num_pages)
         return return_dictionary
