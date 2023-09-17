@@ -1,4 +1,4 @@
-class HolbertonClass {
+export class HolbertonClass {
   constructor(year, location) {
     /* eslint no-underscore-dangle: ["error", { "allow": ["_year", "_location"] }] */
     this._year = year;
@@ -17,7 +17,7 @@ class HolbertonClass {
 const class2019 = new HolbertonClass(2019, 'San Francisco');
 const class2020 = new HolbertonClass(2020, 'San Francisco');
 
-class StudentHolberton {
+export class StudentHolberton {
   constructor(firstName, lastName, holbertonClass) {
     /* eslint no-underscore-dangle: ["error", { "allow": ["_firstName",
     "_lastName", "_holbertonClass"] }] */
