@@ -32,5 +32,4 @@ export default class Currency {
       throw new TypeError('Name must be a string');
     }
   }
-
 }
