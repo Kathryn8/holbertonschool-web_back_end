@@ -1,57 +1,56 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    this.setName(name);
-    this.setLength(length);
-    this.setStudents(students);
+    if (typeof name === 'string' && typeof length === 'number' && Array.isArray(students)) {
+      /* eslint no-underscore-dangle: ["error", { "allow": ["_name"] }] */
+      this._name = name;
+      /* eslint no-underscore-dangle: ["error", { "allow": ["_length"] }] */
+      this._length = length;
+      /* eslint no-underscore-dangle: ["error", { "allow": ["_students"] }] */
+      this._students = students;
+    } else {
+      throw new TypeError('Please check your inputs');
+    }
   }
 
   get name() {
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_name"] }] */
     return this._name;
   }
 
-  setName(name) {
-    if (typeof name !== 'string') {
-      throw new Error('Name must be a string');
+  set name(value) {
+    if (typeof value === 'string') {
+      /* eslint no-underscore-dangle: ["error", { "allow": ["_name"] }] */
+      this._name = value;
+    } else {
+      throw new TypeError('Name must be a string');
     }
-    this._name = name;
-  }
-
-  set name(newName) {
-    this.setName(newName);
   }
 
   get length() {
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_length"] }] */
     return this._length;
   }
 
-  setLength(length) {
-    if (typeof length !== 'number') {
-      throw new Error('Length must be a number');
+  set length(value) {
+    if (typeof value === 'number') {
+      /* eslint no-underscore-dangle: ["error", { "allow": ["_length"] }] */
+      this._length = value;
+    } else {
+      throw new TypeError('Length must be a number');
     }
-    this._length = length;
-  }
-
-  set length(newLength) {
-    this.setLength(newLength);
   }
 
   get students() {
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_students"] }] */
     return this._students;
   }
 
-  setStudents(students) {
-    if (!Array.isArray(students)) {
-      throw new Error('Students must be an array');
+  set students(value) {
+    if (Array.isArray(value)) {
+      /* eslint no-underscore-dangle: ["error", { "allow": ["_students"] }] */
+      this._students = value;
+    } else {
+      throw new TypeError('Students must be an array of strings');
     }
-
-    if (students.some((item) => typeof item !== 'string')) {
-      throw new Error('Students must be an array of strings');
-    }
-
-    this._students = students;
-  }
-
-  set students(newStudents) {
-    this.setStudents(newStudents);
   }
 }
