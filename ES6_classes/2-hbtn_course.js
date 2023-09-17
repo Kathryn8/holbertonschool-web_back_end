@@ -1,56 +1,37 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    if (typeof name === 'string' && typeof length === 'number' && Array.isArray(students)) {
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_name"] }] */
-      this._name = name;
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_length"] }] */
-      this._length = length;
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_students"] }] */
-      this._students = students;
-    } else {
-      throw new TypeError('Please check your inputs');
-    }
-  }
-
-  get name() {
-    /* eslint no-underscore-dangle: ["error", { "allow": ["_name"] }] */
-    return this._name;
+    this.name = name;
+    this.length = length;
+    this.students = students;
   }
 
   set name(value) {
-    if (typeof value === 'string') {
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_name"] }] */
-      this._name = value;
-    } else {
-      throw new TypeError('Name must be a string');
-    }
+    if (typeof value !== 'string') throw new TypeError('Name must be a string');
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_name", "_length", "_students"] }] */
+    this._name = value;
   }
 
-  get length() {
-    /* eslint no-underscore-dangle: ["error", { "allow": ["_length"] }] */
-    return this._length;
+  get name() {
+    return this._name;
   }
 
   set length(value) {
-    if (typeof value === 'number') {
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_length"] }] */
-      this._length = value;
-    } else {
-      throw new TypeError('Length must be a number');
-    }
+    if (typeof value !== 'number') throw new TypeError('Length must be a number');
+    this._length = value;
   }
 
-  get students() {
-    /* eslint no-underscore-dangle: ["error", { "allow": ["_students"] }] */
-    return this._students;
+  get length() {
+    return this._length;
   }
 
   set students(value) {
-    if (Array.isArray(value)) {
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_students"] }] */
-      this._students = value;
-    } else {
+    if (!Array.isArray(value) || !value.every((student) => typeof student === 'string')) {
       throw new TypeError('Students must be an array of strings');
     }
+    this._students = value;
+  }
+
+  get students() {
+    return this._students;
   }
 }
