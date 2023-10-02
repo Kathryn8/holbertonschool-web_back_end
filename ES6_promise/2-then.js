@@ -6,7 +6,7 @@ export default function handleResponseFromAPI(promise) {
 
   function failure() {
     console.log('Got a response from the API');
-    return { err: {} };
+    return new Error();
   }
   promise
     .then(success, failure)
