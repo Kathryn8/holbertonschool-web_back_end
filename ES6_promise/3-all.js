@@ -1,27 +1,11 @@
-
+import * as utils from './utils';
 
 export default function handleProfileSignup() {
-  import('./utils.js')
-    .then((utils) => {
-      Promise.all([utils.uploadPhoto(), utils.createUser()])
+  return Promise.all([utils.uploadPhoto(), utils.createUser()])
+    .then(([photoResponse, userResponse]) => {
+      console.log(photoResponse.body, userResponse.firstName, userResponse.lastName);
     })
-    .then((value) => {
-      //console.log(photoResponse.body, userResponse.firstName, userResponse.lastName);
-      console.log(value)
-    })
-    .catch((e) => {
-      console.log('Signup system offline', e);
+    .catch(() => {
+      console.log('Signup system offline');
     });
 }
-
-// import { uploadPhoto, createUser } from './utils';
-
-// export default function handleProfileSignup() {
-//   return Promise.all([uploadPhoto(), createUser()])
-//     .then(([photoResponse, userResponse]) => {
-//       console.log(photoResponse.body, userResponse.firstName, userResponse.lastName);
-//     })
-//     .catch(() => {
-//       console.log('Signup system offline');
-//     });
-// }
