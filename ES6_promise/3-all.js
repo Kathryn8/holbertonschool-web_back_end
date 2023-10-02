@@ -1,7 +1,9 @@
 import { uploadPhoto, createUser } from './utils';
 
 export default async function handleProfileSignup() {
-  return Promise.all([uploadPhoto(), createUser()])
+  const promiseA = uploadPhoto();
+  const promiseB = createUser();
+  return Promise.all([promiseA, promiseB])
     .then(([photoResponse, userResponse]) => {
       console.log(photoResponse.body, userResponse.firstName, userResponse.lastName);
     })
