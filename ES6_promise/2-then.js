@@ -1,4 +1,4 @@
-export default function handleResponseFromAPI(promise) {
+function handleResponseFromAPI(promise) {
   function success() {
     return { status: 200, body: 'Success' };
   }
@@ -14,3 +14,5 @@ export default function handleResponseFromAPI(promise) {
     .then(success, failure)
     .finally(log);
 }
+
+export default handleResponseFromAPI;
