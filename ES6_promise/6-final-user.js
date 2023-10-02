@@ -1,14 +1,16 @@
-import { signUpUser } from './4-user-promise';
-import { uploadPhoto } from './5-photo-reject';
+import signUpUser from './4-user-promise';
+import uploadPhoto from './5-photo-reject';
 
-async function handleProfileSignup(firstName, lastName, fileName) {
-  try {
-    const userPromise = signUpUser(firstName, lastName);
-    const photoPromise = uploadPhoto(fileName);
+export default function handleProfileSignup(firstName, lastName, fileName) {
+  const promiseA = uploadPhoto(fileName);
+  const promiseB = signUpUser(firstName, lastName);
 
-    const [user, photo] = await Promise.allSettled([userPromise, photoPromise]);
-
-    return [
+  return Promise.allSettled([promiseA, promiseB])
+    .then((data) => {
+      console.log(data);
+    })
+    .catch(() => { })
+    .finally(([user, photo]) => [
       {
         status: user.status,
         value: user.status === 'fulfilled' ? user.value : user.reason,
@@ -16,12 +18,5 @@ async function handleProfileSignup(firstName, lastName, fileName) {
       {
         status: photo.status,
         value: photo.status === 'fulfilled' ? photo.value : photo.reason,
-      },
-    ];
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+      }]);
 }
-
-export default handleProfileSignup;
