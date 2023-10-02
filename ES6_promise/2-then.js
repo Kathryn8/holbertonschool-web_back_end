@@ -9,9 +9,9 @@ function handleResponseFromAPI(promise) {
     console.log('Got a response from the API');
   }
   return promise
-    .then(success)
-    .then(failure)
-    .finally(log);
+    .then(success())
+    .then(failure())
+    .finally(log());
 }
 
 export default handleResponseFromAPI;
