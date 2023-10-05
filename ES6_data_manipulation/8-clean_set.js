@@ -2,12 +2,13 @@ export default function cleanSet(set, startString) {
   if (startString === '') {
     return '';
   }
-  let returnString = '';
+  let returnList = [];
   for (const value of set) {
     if (value.startsWith(startString)) {
       const newValue = value.replace(startString, '');
-      returnString = returnString.concat('-', newValue);
+      returnList.push(newValue);
     }
   }
-  return returnString.substring(1);
+  // console.log(returnList);
+  return returnList.join('-');
 }
