@@ -8,10 +8,11 @@ export default function updateStudentGradeByCity(studentList, city, newGrades) {
   }
   const newStudentList = studentsInCity
     .map((x) => {
+      const studentObject = x;
       try {
-        x["grade"] = newGrades.filter((y) => y.studentId === x.id)[0].grade;
-      } catch {
-        x["grade"] = 'N/A';
+        studentObject.grade = newGrades.filter((y) => y.studentId === studentObject.id)[0].grade;
+      } catch (e) {
+        studentObject.grade = 'N/A';
       }
       return x;
     });
