@@ -16,6 +16,5 @@ export default function updateStudentGradeByCity(studentList, city, newGrades) {
       }
       return x;
     });
-
   return newStudentList;
 }
